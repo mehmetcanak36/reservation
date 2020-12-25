@@ -1,8 +1,6 @@
 <?php
 
-
 $parent     = $this->session->userdata("parent");
-
 $activeItem = $this->session->userdata("activeItem");
 
 ?>

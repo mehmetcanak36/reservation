@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <?php $this->load->view("includes/head"); ?>
-    <?php $this->load->view("room/list/page_style"); ?>
+    <?php $this->load->view("room_properties/edit/page_style"); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -15,9 +15,9 @@
 
 
     <div class="content-wrapper">
-        <?php $this->load->view("room/list/breadcrumb"); ?>
+        <?php $this->load->view("room_properties/edit/breadcrumb"); ?>
         <!-- Content Wrapper. Contains page content -->
-        <?php $this->load->view("room/list/main_content"); ?>
+        <?php $this->load->view("room_properties/edit/main_content"); ?>
     <!-- /.content-wrapper -->
     </div>
 
@@ -26,7 +26,7 @@
 </div>
 
 <?php $this->load->view("includes/footer"); ?>
-<?php $this->load->view("room/list/page_script"); ?>
+<?php $this->load->view("room_properties/edit/page_script"); ?>
 
 </body>
 </html>
