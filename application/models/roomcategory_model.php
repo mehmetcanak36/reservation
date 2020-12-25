@@ -1,116 +1,75 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Roomcategory extends CI_Controller
+
+class roomcategory_model extends CI_Model
 {
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function __construct()
-	{
-		parent::__construct();
+        $this->table = "room_category";
+    }
 
-		$this->load->model("roomcategory_model");
-	}
+    public function get_all($where = array(), $order_by ='id ASC', $select = '*', $limit=array())
+    {
+        $this->db->select($select)
+            ->from($this->table)
+            ->where($where);
 
-	public function index()
-	{
+        if(!empty($order_by))
+            $this->db->order_by($order_by);
 
-		$viewData = new stdClass();
-		$viewData->rows = $this->roomcategory_model->get_all(array(),"rank ASC");
+        if(!empty($limit))
+            $this->db->limit($limit["count"],$limit["start"]);
 
-		$this->load->view('roomcategory', $viewData);
-	}
+        $results = $this->db->get()->result();
 
-	public function newPage(){
+        return $results;
+    }
 
-		$this->load->view("new_roomcategory");
-	}
+    public function get($where=array()){
 
-	public function editPage($id){
+        $row = $this->db->where($where)->get($this->table)->row();
 
-		$viewData = new stdClass();
+        return $row;
 
-		$viewData->row = $this->roomcategory_model->get(array("id" => $id));
+    }
 
-		$this->load->view("edit_roomcategory", $viewData);
+    public function add($data=array()){
 
+        $insert = $this
+            ->db
+            ->insert($this->table,$data);
 
-	}
+        return $insert;
+    }
 
-	public function add(){
+    public function update($where=array(), $data=array()){
 
-		$data = array(
-			"title" 	=> $this->input->post("title"),
-			"isActive"	=> 0
-		);
+        $update = $this->db
+            ->where($where)
+            ->update($this->table, $data);
 
-		$insert = $this->roomcategory_model->add($data);
+        return $update;
 
-		if($insert){
+    }
 
-			redirect(base_url("roomcategory"));
-		}else{
-			redirect(base_url("roomcategory/newPage"));
-		}
-	}
+    public function delete($where=array()){
 
-	public function edit($id){
+        $delete = $this->db
+            ->where($where)
+            ->delete($this->table);
 
-		$data = array(
-			"title" => $this->input->post("title")
-		);
+        return $delete;
+    }
 
-		$update = $this->roomcategory_model->update(
-			array("id"	=> $id),
-			$data
-		);
+    public function get_insert_id(){
 
-		if($update){
-			redirect(base_url("roomcategory"));
-		}else{
-			redirect(base_url("roomcategory/editPage/$id"));
-		}
-	}
+        return $this->db->insert_id();
 
-public function isActiveSetter(){
-
-		$id 	  = $this->input->post("id");
-	$isActive = ($this->input->post("isActive") == "true") ? 1 : 0;
-
-		$update = $this->roomcategory_model->update(
-		array("id" => $id),
-	array("isActive" => $isActive)
-		);
-
-	}
-
-	public function delete($id){
-
-		$delete = $this->roomcategory_model->delete(array("id" => $id));
-
-		redirect(base_url("roomcategory"));
-
-	}
-
-	public function rankUpdate(){
-
-		parse_str($this->input->post("data"), $data);
-
-		$items = $data["sortId"];
-
-		foreach($items as $rank => $id){
-
-			$this->roomcategory_model->update(
-				array(
-						"id"      => $id,
-						"rank !=" => $rank
-					),
-				array("rank" => $rank)
-			);
-
-		}
-
-	}
+    }
 
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+
+?>
