@@ -1,5 +1,5 @@
 <!-- Main content -->
 <section class="content">
-Test
+Dashboard test sayfası
 </section>
 <!-- /.content -->
