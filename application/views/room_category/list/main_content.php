@@ -7,7 +7,7 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <thead>
-                            <th>id</th>
+                            
                             <th>Başlık</th>
                             <th>isActive</th>
                             <th class="col-md-2">İşlemler</th>
@@ -15,7 +15,7 @@
                         <tbody class="sortableList" postUrl="roomcategory/rankUpdate">
                             <?php foreach($rows as $row) { ?>
                                 <tr id="sortId-<?php echo $row->id;?>">
-                                    <td>#<?php echo $row->id; ?></td>
+                                    
                                     <td><?php echo $row->title;?></td>
                                     <td>
                                         <input class = "toggle_check"
