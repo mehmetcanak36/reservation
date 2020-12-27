@@ -8,9 +8,7 @@ class Room extends CI_Controller
 		parent::__construct();
 
 		$this->load->model("room_model");
-		$this->load->model("roomimage_model");
-		$this->load->model("roomavailability_model");
-		$this->load->model("roompricing_model");
+		
 	}
 
 	public function index()
@@ -183,7 +181,7 @@ class Room extends CI_Controller
 
 		$this->load->library('upload', $config);
 
-//		if(!file_exists(FCPATH)){}
+
 
 		if ( ! $this->upload->do_upload('file'))
 		{
@@ -195,7 +193,7 @@ class Room extends CI_Controller
 		else
 		{
 
-			// Upload Basarili ise DB ye aktar..
+			
 			$data = array('upload_data' => $this->upload->data());
 			$img_id = $data["upload_data"]['file_name'];
 

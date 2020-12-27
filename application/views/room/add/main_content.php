@@ -82,16 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="box-body col-md-6">
-                        <div class="form-group">
-                            <label>Ekstra Servisler</label>
-                            <select name="room_extra_services[]" class="form-control select2" multiple="multiple" data-placeholder="Ekstra Servis Seçiniz" style="width: 100%;">
-                                <?php foreach (get_room_extra_services(array("isActive" => 1)) as $row){ ?>
-                                    <option value="<?php echo $row->id; ?>"><?php echo $row->title; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
+                
 
                     <!-- /.box-body -->
                     <div class="clearfix"></div>

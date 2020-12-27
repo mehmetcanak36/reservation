@@ -1,36 +1,36 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Roomcategory extends CI_Controller
+class Roomextraservices extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->load->model("roomcategory_model");
+		$this->load->model("roomextraservices_model");
 	}
 
 	public function index()
 	{
 
 		$viewData = new stdClass();
-		$viewData->rows = $this->roomcategory_model->get_all(array(),"rank ASC");
+		$viewData->rows = $this->roomextraservices_model->get_all(array(),"rank ASC");
 
-		$this->load->view('roomcategory', $viewData);
+		$this->load->view('roomextraservices', $viewData);
 	}
 
 	public function newPage(){
 
-		$this->load->view("new_roomcategory");
+		$this->load->view("new_roomextraservices");
 	}
 
 	public function editPage($id){
 
 		$viewData = new stdClass();
 
-		$viewData->row = $this->roomcategory_model->get(array("id" => $id));
+		$viewData->row = $this->roomextraservices_model->get(array("id" => $id));
 
-		$this->load->view("edit_roomcategory", $viewData);
+		$this->load->view("edit_roomextraservices", $viewData);
 
 
 	}
@@ -42,13 +42,13 @@ class Roomcategory extends CI_Controller
 			"isActive"	=> 0
 		);
 
-		$insert = $this->roomcategory_model->add($data);
+		$insert = $this->roomextraservices_model->add($data);
 
 		if($insert){
 
-			redirect(base_url("roomcategory"));
+			redirect(base_url("roomextraservices"));
 		}else{
-			redirect(base_url("roomcategory/newPage"));
+			redirect(base_url("roomextraservices/newPage"));
 		}
 	}
 
@@ -58,24 +58,25 @@ class Roomcategory extends CI_Controller
 			"title" => $this->input->post("title")
 		);
 
-		$update = $this->roomcategory_model->update(
+		$update = $this->roomextraservices_model->update(
 			array("id"	=> $id),
 			$data
 		);
 
 		if($update){
-			redirect(base_url("roomcategory"));
+			redirect(base_url("roomextraservices"));
 		}else{
-			redirect(base_url("roomcategory/editPage/$id"));
+			redirect(base_url("roomextraservices/editPage/$id"));
 		}
 	}
+
 
 	public function isActiveSetter(){
 
 		$id 	  = $this->input->post("id");
 		$isActive = ($this->input->post("isActive") == "true") ? 1 : 0;
 
-		$update = $this->roomcategory_model->update(
+		$update = $this->roomextraservices_model->update(
 			array("id" => $id),
 			array("isActive" => $isActive)
 		);
@@ -84,9 +85,9 @@ class Roomcategory extends CI_Controller
 
 	public function delete($id){
 
-		$delete = $this->roomcategory_model->delete(array("id" => $id));
+		$delete = $this->roomextraservices_model->delete(array("id" => $id));
 
-		redirect(base_url("roomcategory"));
+		redirect(base_url("roomextraservices"));
 
 	}
 
@@ -98,11 +99,11 @@ class Roomcategory extends CI_Controller
 
 		foreach($items as $rank => $id){
 
-			$this->roomcategory_model->update(
+			$this->roomextraservices_model->update(
 				array(
-						"id"      => $id,
-						"rank !=" => $rank
-					),
+					"id"      => $id,
+					"rank !=" => $rank
+				),
 				array("rank" => $rank)
 			);
 
@@ -111,4 +112,3 @@ class Roomcategory extends CI_Controller
 	}
 
 }
-
