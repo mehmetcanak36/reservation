@@ -66,21 +66,35 @@ class Room extends CI_Controller
 	}
 
 	public function edit($id){
+		$room_properties     = implode(";",$this->input->post("room_properties"));
+		$room_extra_services = implode(";",$this->input->post("room_extra_services"));
 
 		$data = array(
-			"title" => $this->input->post("title")
+			"room_code" 			=> $this->input->post("room_code"),
+			"title" 				=> $this->input->post("title"),
+			"detail" 				=> $this->input->post("detail"),
+			"size" 					=> $this->input->post("size"),
+			"default_price" 		=> $this->input->post("default_price"),
+			"room_type_id" 			=> $this->input->post("room_type_id"),
+			"room_capacity" 		=> $this->input->post("room_capacity"),
+			"room_properties" 		=> $room_properties,
+			"room_extra_services"	=> $room_extra_services,
+			"isActive"				=> 0
 		);
 
 		$update = $this->room_model->update(
 			array("id"	=> $id),
 			$data
 		);
-
 		if($update){
 			redirect(base_url("room"));
 		}else{
 			redirect(base_url("room/editPage/$id"));
 		}
+
+		
+
+		
 	}
 
 	public function isActiveSetter(){
@@ -231,9 +245,7 @@ class Room extends CI_Controller
 
 	}
 
-	/*
-	 * Availability Metodlari
-	 */
+
 
 	public function newAvailabilityPage($room_id){
 
@@ -304,9 +316,7 @@ class Room extends CI_Controller
 
 	}
 
-	/*
-	 * Room Pricing Metodlari
-	 */
+	
     public function newPricingPage($room_id){
 
 

@@ -5,12 +5,8 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <!-- form start -->
-                <form role="form" method="post" action="<?php echo base_url("room/edit/$row->id");?>">
-                    <div class="box-body col-md-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Kategori Adı</label>
-                            <input type="text" class="form-control" name="title" placeholder="Kategori adını giriniz.." value="<?php echo $row->title; ?>">                        </div>
-                    </div>
+                <form role="form" method="post" action="<?php echo base_url("room/edit/");?><?php echo "$row->id"; ?>">
+                    
                     <div class="box-body col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Oda Numarası</label>
@@ -21,7 +17,7 @@
                     <div class="box-body col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Başlık</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" value="<?php echo $row->title; ?>">
                         </div>
                     </div>
 
@@ -30,7 +26,7 @@
                     <div class="box-body col-md-12">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Açıklama</label>
-                                <textarea id="detail" name="detail" rows="10" cols="80"></textarea>
+                                <textarea id="detail" name="detail" rows="10" cols="80"><?php echo $row->detail; ?></textarea>
                         </div>
                     </div>
 
@@ -39,14 +35,14 @@
                     <div class="box-body col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Oda Boyutu</label>
-                            <input type="text" class="form-control" name="size">
+                            <input type="text" class="form-control" name="size" value="<?php echo $row->size; ?>">
                         </div>
                     </div>
 
                     <div class="box-body col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fiyatı(Gecelik)</label>
-                            <input type="text" class="form-control" name="default_price">
+                            <input type="text" class="form-control" name="default_price" value="<?php echo $row->default_price; ?>">
                         </div>
                     </div>
 
@@ -65,9 +61,8 @@
                         <div class="form-group">
                             <label>Kapasite</label>
                             <select class="form-control" name="room_capacity">
-
                                 <?php for($i=1;$i<=10;$i++) { ?>
-                                    <option value="<?php echo $i; ?>"><?php echo "$i Kişilik";?></option>
+                                    <option value="<?php echo $i; ?>" <?php if($row->room_capacity == $i){echo "selected";}else{}; ?> ><?php echo "$i Kişilik";?></option>
                                 <?php } ?>
 
                             </select>
@@ -78,18 +73,19 @@
                         <div class="form-group">
                             <label>Özellikler</label>
                             <select name="room_properties[]" class="form-control select2" multiple="multiple" data-placeholder="Özellik Seçiniz" style="width: 100%;">
+                           
                                 <?php foreach (get_room_properties(array("isActive" => 1)) as $property){ ?>
-                                    <option value="<?php echo $property->id; ?>"><?php echo $property->title; ?></option>
+                                    <option value="<?php echo $property->id; ?>"<?php if($row->room_properties == $property->id){echo "selected";}else{} ?> ><?php echo $property->title; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
-                    </div>
+                    </div> 
                     <div class="box-body col-md-6">
                         <div class="form-group">
                             <label>extra servisler</label>
                             <select name="room_extra_services[]" class="form-control select2" multiple="multiple" data-placeholder="Özellik Seçiniz" style="width: 100%;">
-                                <?php foreach (get_room_extra_services(array("isActive" => 1)) as $property){ ?>
-                                    <option value="<?php echo $property->id; ?>"><?php echo $property->title; ?></option>
+                                <?php foreach (get_room_extra_services(array("isActive" => 1)) as $propert){ ?>
+                                    <option value="<?php echo $propert->id; ?>" <?php if($row->room_extra_services == $propert->id){echo "selected";}else{} ?> ><?php echo $propert->title; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

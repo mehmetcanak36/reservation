@@ -25,7 +25,7 @@
                                     <td><?php echo $row->title;?></td>
                                     <td><?php echo $row->size;?></td>
                                     <td><?php echo $row->default_price;?></td>
-                                    <td><?php echo $row->room_type_id;?></td>
+                                    
                                     <td><?php echo $row->room_capacity;?></td>
                                     <td><?php echo $row->room_properties;?></td>
                                     <td><?php echo $row->room_extra_services;?></td>
