@@ -80,6 +80,16 @@
                             </select>
                         </div>
                     </div>
+                    <div class="box-body col-md-6">
+                        <div class="form-group">
+                            <label>extra servisler</label>
+                            <select name="room_extra_services[]" class="form-control select2" multiple="multiple" data-placeholder="Özellik Seçiniz" style="width: 100%;">
+                                <?php foreach (get_room_extra_services(array("isActive" => 1)) as $property){ ?>
+                                    <option value="<?php echo $property->id; ?>"><?php echo $property->title; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
 
                 
 

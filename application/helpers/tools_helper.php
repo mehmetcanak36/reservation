@@ -7,7 +7,7 @@ function get_room_category(){
 
     $t->load->model("roomcategory_model");
 
-    $getRoom = $t->get_all();
+    $getRoom = $t->roomcategory_model->get_all();
     return $getRoom;
   
 
@@ -17,7 +17,7 @@ function get_room_properties(){
 
     $t->load->model("roomproperties_model");
 
-    $getProperties = $t->get_all();
+    $getProperties = $t->roomproperties_model->get_all();
     return $getProperties;
 
 }
