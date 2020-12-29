@@ -3,7 +3,8 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <form action="<?php echo base_url("room/upload_image");?>" class="dropzone">
+            <form action="<?php echo base_url("room/upload_image");?>" class="dropzone" enctype="multipart/form-data" >
+
             </form>
         </div>
     </div>

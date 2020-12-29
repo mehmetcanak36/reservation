@@ -1,8 +1,8 @@
-<!-- Main content -->
+
 <section class="content">
     <div class="row">
         <div class="col-md-8">
-            <!-- Date range -->
+            
             <form action="<?php echo base_url("room/addNewAvailability/$room_id"); ?>" method="post">
 
                 <div class="form-group">
@@ -14,10 +14,10 @@
                         </div>
                         <input name="availability_date" type="text" class="form-control pull-right" id="availability_date">
                     </div>
-                    <!-- /.input group -->
+                   
                 </div>
                 <button type="submit" class="btn btn-primary">Oluştur</button>
-                <!-- /.form group -->
+                
             </form>
         </div>
     </div>

@@ -43,10 +43,7 @@ function get_room_category_name($id){
         return $category->title;
 
     }
-    
-
-
-    
+   
 }
  function get_category($where=array()){
 
@@ -54,6 +51,40 @@ function get_room_category_name($id){
 
     return $row;
 
+}
+function get_day_from_eng($day){
+
+    $days = array(
+        "Mon"   => "Pzt",
+        "Tue"   => "Sal",
+        "Wed"   => "Çar",
+        "Thu"   => "Per",
+        "Fri"   => "Cum",
+        "Sat"   => "Cmt",
+        "Sun"   => "Paz",
+    );
+
+    return $days[$day];
+}
+
+function get_month_from_eng($month){
+
+    $months = array(
+        "Jan"   => "Oca",
+        "Feb"   => "Şub",
+        "Mar"   => "Mar",
+        "Apr"   => "Nis",
+        "May"   => "May",
+        "Jun"   => "Haz",
+        "Jul"   => "Tem",
+        "Aug"   => "Ağu",
+        "Sep"   => "Eyl",
+        "Oct"   => "Eki",
+        "Nov"   => "Kas",
+        "Dec"   => "Ara",
+    );
+
+    return $months[$month];
 }
 
 

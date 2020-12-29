@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Uygunluk
+        Uygunluk 
         <small>Uygunluk Ekle</small>
     </h1>
     <ol class="breadcrumb">

@@ -8,6 +8,8 @@ class Room extends CI_Controller
 		parent::__construct();
 
 		$this->load->model("room_model");
+		$this->load->model("roomimage_model");
+		$this->load->model("roomavailability_model");
 		
 	}
 
@@ -173,7 +175,7 @@ class Room extends CI_Controller
 
 	public function imageUploadPage($room_id){
 
-		$this->session->set_userdata("room_id", $room_id);
+		$this->session->set_userdata("room_id", $room_id);// çok güzel özellik 
 
 		$viewData = new stdClass();
 		$viewData->rows = $this->roomimage_model->get_all(
@@ -261,7 +263,6 @@ class Room extends CI_Controller
 			),"daily_date ASC"
 		);
 
-
 		$this->load->view("new_roomavailability", $viewData);
 
 	}
@@ -269,9 +270,6 @@ class Room extends CI_Controller
 
 	public function addNewAvailability($room_id){
 
-		//08/10/2016 - 08/25/2016
-
-		// 2016-08-10
 
 		$availability_date = explode("-", $this->input->post("availability_date"));
 		$startDateArr  = explode("/", $availability_date[0]);

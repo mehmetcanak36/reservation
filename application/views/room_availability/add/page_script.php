@@ -7,14 +7,14 @@
 
     $(document).ready(function () {
 
-        //Date range picker
+        
         $('#availability_date').daterangepicker();
 
 
-        // Bootstrap Toggle init
+        
         $('.toggle_check').bootstrapToggle();
 
-        // isActive Change
+        
 
         $('.toggle_check').change(function () {
 
