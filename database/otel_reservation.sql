@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 28 Ara 2020, 07:26:02
+-- Üretim Zamanı: 29 Ara 2020, 11:14:27
 -- Sunucu sürümü: 5.7.31
 -- PHP Sürümü: 7.4.9
 
@@ -81,14 +81,38 @@ CREATE TABLE IF NOT EXISTS `room` (
   `room_extra_services` varchar(500) DEFAULT NULL,
   `room_capacity` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `room`
 --
 
 INSERT INTO `room` (`id`, `title`, `detail`, `size`, `room_code`, `default_price`, `room_type_id`, `bed_type`, `bed_count`, `isActive`, `rank`, `room_properties`, `room_extra_services`, `room_capacity`) VALUES
-(1, 'dwewe', 'dfgdf', '2', '58', 7.4, 9, 'normal', NULL, 1, 5, '5', '2', 2);
+(4, 't123', '<p>yrtytryrty</p>\r\n', '300', 'r987', 87, 8, NULL, NULL, 1, NULL, '12', '3', 5),
+(3, 'kat1', '<p>ghjghjgjgh</p>\r\n', '300', '45', 200, 8, NULL, NULL, 1, NULL, '11', '1', 3),
+(5, 'ghjghj', '<p>ghjghjgjgh</p>\r\n', '300', 'fddf', 200, 8, NULL, NULL, 1, NULL, '11', '1', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `room_availability`
+--
+
+DROP TABLE IF EXISTS `room_availability`;
+CREATE TABLE IF NOT EXISTS `room_availability` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `daily_date` date DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=552 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `room_availability`
+--
+
+INSERT INTO `room_availability` (`id`, `daily_date`, `room_id`, `status`) VALUES
+(551, '2020-12-29', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -103,17 +127,16 @@ CREATE TABLE IF NOT EXISTS `room_category` (
   `rank` int(11) DEFAULT '0',
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `room_category`
 --
 
 INSERT INTO `room_category` (`id`, `title`, `rank`, `isActive`) VALUES
-(8, 'dwesdfdfd', 0, 1),
+(8, 'dwesdf', 0, 1),
 (10, 'wr433', 0, 1),
-(11, '7965rytvhg', 0, 1),
-(12, 'ıtyjhbkj', 0, 1);
+(11, '7965rytvhg', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +152,16 @@ CREATE TABLE IF NOT EXISTS `room_extra_services` (
   `rank` int(11) DEFAULT NULL,
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `room_extra_services`
+--
+
+INSERT INTO `room_extra_services` (`id`, `title`, `icon`, `rank`, `isActive`) VALUES
+(1, 'wr433ertertert', NULL, NULL, 1),
+(3, 'fghgfhfghfg', NULL, NULL, 1),
+(4, 'fghfghfghfgh', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
