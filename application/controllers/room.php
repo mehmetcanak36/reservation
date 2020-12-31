@@ -10,6 +10,7 @@ class Room extends CI_Controller
 		$this->load->model("room_model");
 		$this->load->model("roomimage_model");
 		$this->load->model("roomavailability_model");
+		$this->load->model("roompricing_model");
 		
 	}
 
@@ -175,7 +176,7 @@ class Room extends CI_Controller
 
 	public function imageUploadPage($room_id){
 
-		$this->session->set_userdata("room_id", $room_id);// çok güzel özellik 
+		$this->session->set_userdata("room_id", $room_id);
 
 		$viewData = new stdClass();
 		$viewData->rows = $this->roomimage_model->get_all(
@@ -190,12 +191,16 @@ class Room extends CI_Controller
 	}
 
 	public function upload_image(){
-
-		$config['upload_path']          = 'uploads/';
-		$config['allowed_types']        = '*';
+ 
+		$config['upload_path']          = 'uploads/';//dosyayı nereye aktarayım
+		$config['allowed_types']        = '*'; //"jpg|gif|png"; böyle tanımlanıyor neyi kaydeğimiz
 		$config['encrypt_name']			= true;
 
-		$this->load->library('upload', $config);
+		$this->load->library('upload', $config);//upload burda kütüphaneninin ismi
+												//bu sınıfa hangi klasore upload edecez
+												//hangi dosya türlerine izin verecez
+												//bunu için config arrari tanımlıyoruz bunu
+
 
 
 
@@ -204,12 +209,13 @@ class Room extends CI_Controller
 			$error = array('error' => $this->upload->display_errors());
 
 			print_r($error);
+			print_r($this->upload->do_upload('file'));
+
 
 		}
 		else
 		{
-
-			
+			print_r($this->upload->do_upload('file'));
 			$data = array('upload_data' => $this->upload->data());
 			$img_id = $data["upload_data"]['file_name'];
 
@@ -217,10 +223,12 @@ class Room extends CI_Controller
 					"img_id"	=> $img_id,
 					"room_id"	=> $this->session->userdata("room_id"),
 					"isActive"	=> 1,
-					"rank"		=> 0
+					"isCover"   =>1,
+					"rank"		=> 1
 				)
 
 			);
+			
 
 
 		}

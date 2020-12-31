@@ -1,18 +1,19 @@
-<script src="<?php echo base_url("assets"); ?>/dist/js/third_party/dropzone.js"></script>
 <script src="<?php echo base_url("assets"); ?>/dist/js/third_party/bootstrap-toggle.min.js"></script>
 <script src="<?php echo base_url("assets"); ?>/dist/js/third_party/jquery.fancybox.min.js"></script>
+<script src="<?php echo base_url("assets"); ?>/dist/js/dropzone/dropzone.js"></script>
 
 <script>
 
     $(document).ready(function () {
 
         $(".dropzone").dropzone();
+        
 
 
-        // Bootstrap Toggle init
+        
         $('.toggle_check').bootstrapToggle();
 
-        // isActive Change
+        
 
         $('.toggle_check').change(function () {
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 29 Ara 2020, 11:14:27
+-- Üretim Zamanı: 31 Ara 2020, 12:59:58
 -- Sunucu sürümü: 5.7.31
 -- PHP Sürümü: 7.4.9
 
@@ -56,7 +56,14 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `meta_description` varchar(255) DEFAULT NULL,
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `contact`
+--
+
+INSERT INTO `contact` (`id`, `title`, `address`, `phone`, `fax`, `email`, `web`, `facebook`, `twitter`, `google_plus`, `instagram`, `youtube`, `linkedin`, `mission`, `vision`, `about_us`, `logo`, `bank_account`, `tax_id`, `mersis_id`, `google_analytics`, `map_att`, `map_lat`, `meta_keyword`, `meta_description`, `isActive`) VALUES
+(1, 'oda', 'adasdas', 'asdffs', 'sdfsdf', 'sdfsdf', 'fsdfssd', 'fsfsdf', 'fsfsd', 'fsdfs', 'sdfsdf', 'fsdfsd', 'sfsdfsdfsdf', 'sfdfsdfsdfsd', 'fsdfsfsfsfsd', 'sdfsdfsdfsd', 'sdfsdfsd', 'sgdfhfh', 'fgh', 'hfghd', 'fghrt', 'fujty', 'rsyhrtf', 'fguret', 'rhtjhnur', 1);
 
 -- --------------------------------------------------------
 
@@ -81,16 +88,17 @@ CREATE TABLE IF NOT EXISTS `room` (
   `room_extra_services` varchar(500) DEFAULT NULL,
   `room_capacity` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `room`
 --
 
 INSERT INTO `room` (`id`, `title`, `detail`, `size`, `room_code`, `default_price`, `room_type_id`, `bed_type`, `bed_count`, `isActive`, `rank`, `room_properties`, `room_extra_services`, `room_capacity`) VALUES
-(4, 't123', '<p>yrtytryrty</p>\r\n', '300', 'r987', 87, 8, NULL, NULL, 1, NULL, '12', '3', 5),
-(3, 'kat1', '<p>ghjghjgjgh</p>\r\n', '300', '45', 200, 8, NULL, NULL, 1, NULL, '11', '1', 3),
-(5, 'ghjghj', '<p>ghjghjgjgh</p>\r\n', '300', 'fddf', 200, 8, NULL, NULL, 1, NULL, '11', '1', 3);
+(8, 'oda2', '<p><em>Otel</em>&nbsp;Hotel&nbsp;<em>Second Home</em>. Hotel&nbsp;<em>Second Home</em>&nbsp;... 2 kilometre uzaklıktadır. Hotel&nbsp;<em>Second Home</em>, Booking.com konuklarını 1 Ağu 2018 tarihinden beri ağırlıyor.</p>\r\n', '100', '2', 300, 13, NULL, NULL, 1, NULL, '16;19', '7;8', 4),
+(7, 'oda1', '<p><em>Second Home</em>&nbsp;Hotel Kuwait City indirimli fiyatlar ile tatil.com&#39;da. Ger&ccedil;ek&nbsp;<em>otel</em>&nbsp;yorumları ile kampanyalı fiyatlar ve taksit fırsatlarını ka&ccedil;ırmayın!</p>\r\n', '300', '1', 500, 12, NULL, NULL, 1, NULL, '17;18', '8;9', 3),
+(9, 'oda3', '<p>KAYAK, y&uuml;zlerce seyahat sitesinde arama yaparak en uygun&nbsp;<em>Second Home</em>&nbsp;Hostel fırsatını bulur ve rezerve etmenize yardımcı olur.&nbsp;</p>\r\n', '100', '3', 200, 14, NULL, NULL, 1, NULL, '16', '7', 1),
+(10, 'oda4', '<p><em>Second Home</em>&nbsp;Hostel (Fatih, İstanbul) otelinde konaklama yapmak i&ccedil;in resimlerini incele, bilgilerine bak, uygun fiyatları g&ouml;zden ge&ccedil;ir&nbsp;</p>\r\n', '110', '4', 350, 15, NULL, NULL, 1, NULL, '15;16;17;18;19;20', '7;8;9', 1);
 
 -- --------------------------------------------------------
 
@@ -105,14 +113,7 @@ CREATE TABLE IF NOT EXISTS `room_availability` (
   `room_id` int(11) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=552 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Tablo döküm verisi `room_availability`
---
-
-INSERT INTO `room_availability` (`id`, `daily_date`, `room_id`, `status`) VALUES
-(551, '2020-12-29', 4, 1);
+) ENGINE=InnoDB AUTO_INCREMENT=582 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
@@ -127,16 +128,17 @@ CREATE TABLE IF NOT EXISTS `room_category` (
   `rank` int(11) DEFAULT '0',
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `room_category`
 --
 
 INSERT INTO `room_category` (`id`, `title`, `rank`, `isActive`) VALUES
-(8, 'dwesdf', 0, 1),
-(10, 'wr433', 0, 1),
-(11, '7965rytvhg', 0, 1);
+(12, 'Dorm Rooms', 0, 1),
+(13, 'Shared Rooms', 0, 1),
+(14, 'Private Rooms', 0, 1),
+(15, 'Suite Rooms', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -152,16 +154,17 @@ CREATE TABLE IF NOT EXISTS `room_extra_services` (
   `rank` int(11) DEFAULT NULL,
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `room_extra_services`
 --
 
 INSERT INTO `room_extra_services` (`id`, `title`, `icon`, `rank`, `isActive`) VALUES
-(1, 'wr433ertertert', NULL, NULL, 1),
-(3, 'fghgfhfghfg', NULL, NULL, 1),
-(4, 'fghfghfghfgh', NULL, NULL, 1);
+(8, 'Large Double Bed', NULL, NULL, 1),
+(7, 'Ceiling Fan', NULL, NULL, 1),
+(6, 'Bathroom in the hall', NULL, NULL, 1),
+(9, 'Air Condition', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -176,8 +179,36 @@ CREATE TABLE IF NOT EXISTS `room_image` (
   `room_id` int(11) DEFAULT NULL,
   `isActive` tinyint(255) DEFAULT NULL,
   `rank` int(11) DEFAULT NULL,
+  `isCover` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `room_image`
+--
+
+INSERT INTO `room_image` (`id`, `img_id`, `room_id`, `isActive`, `rank`, `isCover`) VALUES
+(27, '198e80bcdfa849aaa0ee7721c5f6132d.jpg', 8, 1, 1, 1),
+(28, '9c5259bb76643a008bb55d90402cada5.jpg', 9, 1, 1, 1),
+(25, '9d180fe0beb3abc0d41e908065e05bbc.jpg', 7, 1, 1, 1),
+(26, '152b41b5b2da944210f632b79d191324.jpg', 8, 1, 1, 1),
+(31, '61f975336bcff7193cf821ab07b650d8.jpg', 10, 1, 1, 1),
+(24, '0c91a7328f5cf33dddf193084bede9f9.jpg', 7, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `room_pricing`
+--
+
+DROP TABLE IF EXISTS `room_pricing`;
+CREATE TABLE IF NOT EXISTS `room_pricing` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `price` double(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -193,17 +224,19 @@ CREATE TABLE IF NOT EXISTS `room_properties` (
   `rank` int(11) DEFAULT NULL,
   `isActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `room_properties`
 --
 
 INSERT INTO `room_properties` (`id`, `title`, `icon`, `rank`, `isActive`) VALUES
-(12, 'dwew65y65e', NULL, NULL, 1),
-(8, 'erte', NULL, NULL, 1),
-(13, 'ere', NULL, NULL, 1),
-(11, 'wr433', NULL, NULL, 1);
+(18, 'Secure lockers', NULL, NULL, 1),
+(17, 'Internet / Wi-Fi', NULL, NULL, 1),
+(16, '24 hour hot showers', NULL, NULL, 1),
+(15, 'Television room', NULL, NULL, 1),
+(19, 'Guest Kitchen	 ', NULL, NULL, 1),
+(20, '24 Hour Restaurant', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

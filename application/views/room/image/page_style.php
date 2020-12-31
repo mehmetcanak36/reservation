@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url("assets");?>/dist/css/third_party/dropzone.css"/>
+<link rel="stylesheet" href="<?php echo base_url("assets");?>/dist/css/dropzone/dropzone.css"/>
 <link rel="stylesheet" href="<?php echo base_url("assets");?>/dist/css/third_party/bootstrap-toggle.min.css"/>
 <link rel="stylesheet" href="<?php echo base_url("assets");?>/dist/css/third_party/jquery.fancybox.min.css" media="screen">
 
